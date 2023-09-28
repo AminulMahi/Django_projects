@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +18,10 @@ section{
     align-items: center;
     min-height: 100vh;
     width: 100%;
-    background-color: deepskyblue;
-    /* background: url(background.jpg)no-repeat;
+    /* background-color: deepskyblue; */
+    background: url(/static/images/background.jpg)no-repeat;
     background-position: center;
-    background-size: cover; */
+    background-size: cover;
 }
 .form_box{
     position: relative;
@@ -128,16 +129,17 @@ button:hover{
     <section>
         <div class="form_box">
             <div class="form_value">
-                <form action="">
+                <form action="{% url 'user' %}" method="post">
+                {% csrf_token %}
                     <h2>LogIn</h2>
                     <div class="inputbox">
                         <ion-icon name="mail"></ion-icon>
-                        <input type="email" required>
+                        <input type="email" name="email" required>
                         <label for="email">Email</label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock"></ion-icon>
-                        <input type="password" required>
+                        <input type="password" name="password" required>
                         <label for="password">Password</label>
                     </div>
                     <div class="forget">
