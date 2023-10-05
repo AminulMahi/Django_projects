@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from project2.models import User
+from .models import User
 
 def home(request):
     return render(request, 'index1.html')
@@ -14,7 +14,7 @@ def output(request):
     
 
 def insert_info(request):
-    if request.method == 'POST':
+    if request.method == 'POST':  # post is secure method
         nam = request.POST.get('nam')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
