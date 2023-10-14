@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome to User Form</h1>
+    <form action="{% url 'update_index' %}" method="post" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{all_user_data.id}}"><br><br>
+        <label for="">Name</label>
+        <input type="text" name="name" value="{{all_user_data.name}}"><br><br>
+        <label for="">Phone</label>
+        <input type="text"  name="phone" value="{{all_user_data.phone}}"><br><br>
+        <label for="">Email</label>
+        <input type="text"  name="email" value="{{all_user_data.email}}"><br><br>
+        <label for="">Image</label>
+        <input type="file"  name="image"><br><br>
+        <input type="submit" name="" value="Submit"><br>
+    </form>
+    
+</body>
+</html>
