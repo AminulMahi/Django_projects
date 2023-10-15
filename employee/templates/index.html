@@ -44,6 +44,10 @@
                         <td class="w-25">
                             <img width="150px" src="/media/{{i.image}}" alt="image-not-found">
                         </td>
+                        <td class="w-25">
+                            <!-- <video target="_blank" controls width="150px" src="/media/{{i.video}}" alt="image-not-found"> -->
+                            <a href="/media/{{i.video}}" target="_blank"><img width="150px" src="/media/{{i.image}}" alt="image-not-found"></a>
+                        </td>
                         <td>
                           <a href="{% url 'edit_index' i.id %}" target="_blank"><button type="button" class="mr-3 btn btn-primary">Edit</button></a>
                           <a href="{% url 'delete_item' i.id %}"><button type="button" class="btn btn-primary">Delete</button></a>
@@ -75,6 +79,8 @@
                 <input type="text"  id="" name="email"><br><br>
                 <label for="">Image</label>
                 <input type="file"  id="" name="image"><br><br>
+                <label for="">video</label>
+                <input type="file"  id="" name="video"><br><br>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" name="" id="" value="Submit" class="btn btn-primary">Save changes</button>

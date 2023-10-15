@@ -13,11 +13,14 @@ def user(request):
     u_email = request.POST.get('email')
     u_phone = request.POST.get('phone')
     u_image = request.FILES.get('image')
+    u_video = request.FILES.get('video')
+
     user_obj = user_data()
     user_obj.name = u_name
     user_obj.email = u_email
     user_obj.phone = u_phone
     user_obj.image = u_image
+    user_obj.video = u_video
     user_obj.save()
     return redirect('user_home')
 
@@ -32,12 +35,15 @@ def update(request):
     u_email = request.POST.get('email')
     u_phone = request.POST.get('phone')
     u_image = request.FILES.get('image')
+    u_video = request.FILES.get('video')
 
     user_obj = get_object_or_404(user_data,id=id)
     user_obj.name = u_name
     user_obj.email = u_email
     user_obj.phone = u_phone
     user_obj.image = u_image
+    user_obj.video = u_video
+
     user_obj.save()
     return redirect('user_home')
 
