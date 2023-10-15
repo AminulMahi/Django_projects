@@ -26,5 +26,6 @@ urlpatterns = [
     path('', views.home, name='user_home'),
     path('user/', views.user, name='user_index'),
     path('user/<int:id>', views.edit_index, name='edit_index'),
-    path('update/', views.update, name='update_index')
+    path('update/', views.update, name='update_index'),
+    path('delete/<str:id>', views.delete, name='delete_item')
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

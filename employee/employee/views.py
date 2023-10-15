@@ -40,3 +40,9 @@ def update(request):
     user_obj.image = u_image
     user_obj.save()
     return redirect('user_home')
+
+
+def delete(request, id):
+    all_data = user_data.objects.filter(id=id) #select single data by id from user model
+    all_data.delete()
+    return redirect('user_home')
