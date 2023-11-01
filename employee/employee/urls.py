@@ -24,8 +24,13 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='user_home'),
+    #path('root dir', views.func(home), name='user_home')
     path('user/', views.user, name='user_index'),
+    #path('pathName=user', viewsFunc(user), name='url redirect form index.html named="user_index"')
     path('user/<int:id>', views.edit_index, name='edit_index'),
+    #path('user path/getting intiger id', viewsFunc(edit_index), name='url redirect form index.html named="edit_index"')
     path('update/', views.update, name='update_index'),
+    #path('pathName=update', viewsFunc(update), name='url redirect form index.html named="update_index')
     path('delete/<str:id>', views.delete, name='delete_item')
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
+

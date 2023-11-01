@@ -1,0 +1,261 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro:400,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'admin/assets/admin_fonts/icomoon/style.css' %}">
+
+    <link rel="stylesheet" href="{% static 'admin/assets/admin_css/owl.carousel.min.css' %}">
+
+    <!--Modal styling -->
+    <link rel="stylesheet" href="{% static 'admin/assets/css/style1.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'admin/assets/admin_css/bootstrap.min.css' %}">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="{% static 'admin/assets/admin_css/style.css' %}">
+
+    <title>Education - Panel</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Inter", sans-serif;
+      }
+         /* Style for the form container */
+    .form-container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    /* Style for labels */
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* Style for input fields */
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+  
+    /* Style for the submit button */
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+          /* Style for the table */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px auto;
+    }
+
+    /* Style for table header */
+    th {
+      background-color: #007bff;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Style for table rows */
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    /* Style for table cells */
+    td, th {
+      padding: 10px;
+      border: 1px solid #ddd;
+      text-align: left;
+    } 
+    </style>
+  </head>
+  <body>
+  
+    
+    <aside class="sidebar">
+      <div class="toggle">
+        <a href="#" class="burger js-menu-toggle" data-toggle="collapse" data-target="#main-navbar">
+              <span></span>
+            </a>
+      </div>
+      <div class="side-inner">
+
+        <div class="profile">
+          <img src="{% static 'admin/assets/admin_images/profile.jpg' %}" alt="Image" class="img-fluid">
+          <h3 class="name">Debby Williams</h3>
+          <span class="country">New York, USA</span>
+        </div>
+
+        <div class="counter d-flex justify-content-center">
+          <!-- <div class="row justify-content-center"> -->
+            <div class="col">
+              <strong class="number">892</strong>
+              <span class="number-label">Posts</span>
+            </div>
+            <div class="col">
+              <strong class="number">22.5k</strong>
+              <span class="number-label">Followers</span>
+            </div>
+            <div class="col">
+              <strong class="number">150</strong>
+              <span class="number-label">Following</span>
+            </div>
+          <!-- </div> -->
+        </div>
+        
+        <div class="nav-menu">
+          <ul>
+            <li class="active"><a href="/index/admin/"><span class="icon-home mr-3"></span>Admin Main Page</a></li>
+            <li><a href="/index/experience/"><span class="icon-search2 mr-3"></span>Post Experience</a></li>
+            <li><a href="/index/education/"><span class="icon-notifications mr-3"></span>Post Education</a></li>
+            <li><a href="/index/skills/"><span class="icon-location-arrow mr-3"></span>Post Skills</a></li>
+            <li><a href="/index/interest/"><span class="icon-pie-chart mr-3"></span>Post Interest</a></li>
+            <li><a href="/index/awards/"><span class="icon-sign-out mr-3"></span>Post Awards</a></li>
+            <li><a href="/index/"><span class="icon-sign-out mr-3"></span>Profile Page</a></li>
+          </ul>
+        </div>
+      </div>
+      
+    </aside>
+    <main>
+      <div class="site-section">
+        <div class="container">
+          <div class="row justify-content-center">
+
+            <div class="formbold-main-wrapper">
+              <!-- Author: FormBold Team -->
+              <!-- Learn More: https://formbold.com -->
+              <div class="formbold-form-wrapper">
+                <!--gpt form-->
+                <h2 class="mb-5 bold">Admin Education Page</h2>
+                <div class="form-container">
+                  <form action="{% url 'edu_insert_index' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="name">University Name:</label>
+                    <input type="text" id="name" name="u_name" required>
+
+                    <label for="name">Subject Title: </label>
+                    <input type="text" id="name" name="u_title" required>
+                    
+                    <label for="name">Subject Name: </label>
+                    <input type="text" id="name" name="u_subject" required>
+                    
+                    <label for="description">GPA:</label>
+                    <input type="text" id="name" name="u_gpa" required>
+                    
+                    <label for="name">Date:</label>
+                    <input type="date" id="name" name="u_date" value="{{placement.u_date}}" required>
+
+                    <input type="submit" value="Submit">
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          
+            <!--data table-->
+            <table>
+              <thead>
+                <tr>
+                  <th>University</th>
+                  <th>Title</th>
+                  <th>Subject</th>
+                  <th>GPA</th>
+                  <th>Date</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in all_edu_data %}
+                <tr>
+                  <td>{{i.u_name}}</td>
+                  <td>{{i.u_title}}</td>
+                  <td>{{i.u_subject}}</td>
+                  <td>{{i.u_gpa}}</td>
+                  <td>{{i.u_date}}</td>
+                  <td>
+                    <!-- <a href="#editEmployeeModal-{{forloop.counter}}" class="edit" data-toggle="modal""><button type="button" class="mr-3 btn btn-primary">Edit</button></a> -->
+                    <a href="{% url 'delete_edu_item' i.id %}"><button type="button" class="btn btn-primary">Delete</button></a>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>  
+    </main>
+    	<!-- Edit Modal HTML -->
+	<!-- {% for i in all_user_data %}
+	<div id="editEmployeeModal-{{forloop.counter}}" class="modal fade">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<form action="/update/{{i.id}}" method="post">
+					{% csrf_token %}
+					<div class="modal-header">						
+						<h4 class="modal-title">Edit Employee</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<div class="modal-body">					
+						<div class="form-group">
+							<label>Heading</label>
+							<input name="heading" value="{{i.heading}}" type="text" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label>Sub Heading</label>
+							<input name="sub_heading" value="{{i.sub_heading}}" type="text" class="form-control" required>
+						</div>
+            <div class="form-group">
+              <label>Description</label>
+              <textarea cols="38" rows="5" name="description" value="{{i.description}}" type="text" class="form-control" required></textarea>
+            </div>
+					</div>
+					<div class="modal-footer">
+						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="submit" class="btn btn-info" value="Update">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+     -->
+    
+    <script src="{% static 'admin/assets/admin_js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'admin/assets/admin_js/popper.min.js' %}"></script>
+    <script src="{% static 'admin/assets/admin_js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'admin/assets/admin_js/main.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'admin/assets/js/script1.js' %}"> <!--modal script-->
+  </body>
+</html>

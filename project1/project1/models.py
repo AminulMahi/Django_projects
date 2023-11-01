@@ -7,3 +7,4 @@ class User(models.Model):
     email = models.CharField(max_length=50)
     phone = models.CharField(max_length=50)
     messages = models.CharField(max_length=255)
+    # CreatingVariable = ModelsMethod.DataType(Deafault or customizeable paramiter)
