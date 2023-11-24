@@ -136,13 +136,14 @@
         
         <div class="nav-menu">
           <ul>
-            <li class="active"><a href="/index/admin/"><span class="icon-home mr-3"></span>Admin Main Page</a></li>
-            <li><a href="/index/experience/"><span class="icon-search2 mr-3"></span>Post Experience</a></li>
-            <li><a href="/index/education/"><span class="icon-notifications mr-3"></span>Post Education</a></li>
-            <li><a href="/index/skills/"><span class="icon-location-arrow mr-3"></span>Post Skills</a></li>
-            <li><a href="/index/interest/"><span class="icon-pie-chart mr-3"></span>Post Interest</a></li>
-            <li><a href="/index/awards/"><span class="icon-sign-out mr-3"></span>Post Awards</a></li>
-            <li><a href="/index/"><span class="icon-sign-out mr-3"></span>Profile Page</a></li>
+            <li class="active"><a href="/admin/"><span class="icon-home mr-3"></span>Admin Main Page</a></li>
+            <li><a href="/experience/"><span class="icon-search2 mr-3"></span>Post Experience</a></li>
+            <li><a href="/education/"><span class="icon-notifications mr-3"></span>Post Education</a></li>
+            <li><a href="/skills/"><span class="icon-location-arrow mr-3"></span>Post Skills</a></li>
+            <li><a href="/interest/"><span class="icon-pie-chart mr-3"></span>Post Interest</a></li>
+            <li><a href="/awards/"><span class="icon-sign-out mr-3"></span>Post Awards</a></li>
+            <li><a href="{% url 'logout' %}"><span class="icon-sign-out mr-3"></span>Log Out</a></li>
+            <li><a href="/"><span class="icon-sign-out mr-3"></span>Profile Page</a></li>
           </ul>
         </div>
       </div>
@@ -231,7 +232,7 @@
                     {{i.f_url}}
                   </td>
                   <td>
-                    <!-- <a href="#editEmployeeModal-{{forloop.counter}}" class="edit" data-toggle="modal""><button type="button" class="mr-3 btn btn-primary">Edit</button></a> -->
+                    <a href="#editEmployeeModal-{{forloop.counter}}" class="edit" data-toggle="modal""><button type="button" class="mr-3 btn btn-primary">Edit</button></a>
                     <a href="{% url 'delete_item' i.id %}"><button type="button" class="btn btn-primary">Delete</button></a>
                   </td>
                 </tr>
@@ -243,14 +244,14 @@
       </div>  
     </main>
     	<!-- Edit Modal HTML -->
-	<!-- {% for i in all_user_data %}
+	{% for i in all_user_data %}
 	<div id="editEmployeeModal-{{forloop.counter}}" class="modal fade">
 		<div class="modal-dialog modal-xl">
 			<div class="modal-content">
-				<form action="index/update/{{i.id}}" method="post">
+				<form action="/update/{{i.id}}" method="post">
 					{% csrf_token %}
 					<div class="modal-header">						
-						<h4 class="modal-title">Edit Employee</h4>
+						<h4 class="modal-title">Edit Profile</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
@@ -280,12 +281,14 @@
             </div>
             <div class="form-group">
               <label>Description</label>
-              <textarea cols="38" rows="5" name="description" value="{{i.description}}" type="text" class="form-control" required></textarea>
+              <textarea cols="38" rows="5" name="description" type="text" class="form-control" required>{{i.description}}</textarea>
             </div>
             <div class="form-group">
               <label>Image</label>
-              <input name="image" value="{{i.image}}" type="file" class="form-control" required>
+              <!-- <input name="image" type="file" class="form-control" required> -->
+              <input type="file" value="{{i.image}}" id="" class="form-control" name="image">
             </div>
+            
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
@@ -295,7 +298,7 @@
 			</div>
 		</div>
 	</div>
-	{% endfor %} -->
+	{% endfor %}
     
     
     <script src="{% static 'admin/assets/admin_js/jquery-3.3.1.min.js' %}"></script>

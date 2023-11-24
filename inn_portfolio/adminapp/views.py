@@ -1,9 +1,15 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from adminapp.models import Main, Experience, Education, Skills, Interest, Awards
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 
 # Create your views here.
 
 # main page index and getting data from DB to main page
+
 def index(request):
     all_data = Main.objects.all()
     all_data1 = Experience.objects.all()
@@ -21,7 +27,42 @@ def index(request):
         }
     return render(request, 'index.html', data)
 
+#Signup system
+def SignUp(request):
+    if request.method == 'POST':
+        uname = request.POST.get('username')
+        email = request.POST.get('email')
+        pass1 = request.POST.get('password1')
+        pass2 = request.POST.get('password2')
+
+        if pass1!= pass2:
+            return HttpResponse("Your password and confirm pass is not same. Try again!")
+        else:
+            my_user = User.objects.create_user(uname,email,pass1)
+            my_user.save()
+            return redirect('signup')
+    return render(request, 'admin/signup.html')
+
+#Login function
+def LogIn(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        pass1 = request.POST.get('pass')
+        user = authenticate(request,username=username,password=pass1)
+        if user is not None:
+            login(request,user)
+            return redirect('admin_index')
+        else:
+            return HttpResponse("Your username and passwrod is wrong! Try again!")
+    return render(request, 'admin/login.html')
+
+#logout function
+def LogOutPage(request):
+    logout(request)
+    return redirect('/')
+
 #admin page ndex and getting data from DB to main page
+@login_required(login_url='login')
 def admin_index(request):
     all_data = Main.objects.all()
     data = {'all_user_data' : all_data}
@@ -56,7 +97,7 @@ def user(request):
             g_url = g_url,
     )
     obj.save()
-    return redirect('admin_index')
+    return redirect('index')
 
 # update data by user to main page
 def update(request, id):
@@ -78,7 +119,7 @@ def update(request, id):
             address = address,
             phone = phone,
             description = description,
-            image = image
+            image = image,
         )
     obj.save()
     return redirect('index')
@@ -92,7 +133,7 @@ def delete(request, id):
 # Experience page views
 # insert page
 
-
+@login_required(login_url='login')
 def exp(request):
     all_data = Experience.objects.all()
     data = {'all_exp_data' : all_data}
@@ -120,7 +161,7 @@ def delete_exp(request, id):
     return redirect('exp')
 
 # Education page views
-
+@login_required(login_url='login')
 def edu(request):
     all_data = Education.objects.all()
     data = {'all_edu_data' : all_data}
@@ -152,6 +193,7 @@ def delete_edu(request, id):
     return redirect('edu')
 
 # skills page views
+@login_required(login_url='login')
 def skills(request):
     all_data = Skills.objects.all()
     data = {'all_skill_data' : all_data}
@@ -175,6 +217,7 @@ def delete_skill(request, id):
     return redirect('skills')
 
 # interest page views
+@login_required(login_url='login')
 def interest(request):
     all_data = Interest.objects.all()
     data = {'all_int_data' : all_data}
@@ -196,6 +239,7 @@ def delete_int(request, id):
     return redirect('interest')
 
 # Award page views
+@login_required(login_url='login')
 def awards(request):
     all_data = Awards.objects.all()
     data = {'all_awa_data' : all_data}
